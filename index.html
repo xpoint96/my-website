@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Современный адаптивный сайт">
+  <title>Мой сайт</title>
+  <style>
+    /* Базовые стили. Цвета и тексты можно менять также в design.csv. */
+    :root {
+      --bg: #0b1020;
+      --surface: #141c31;
+      --text: #f4f7ff;
+      --muted: #aab5ce;
+      --accent: #7c5cff;
+      --accent-hover: #6846f0;
+      --border: rgba(255,255,255,.12);
+      --radius: 20px;
+      --content-width: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(ellipse at top right, #1c2450 0, var(--bg) 48%);
+      color: var(--text); line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--content-width), calc(100% - 40px)); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(14px); background: rgba(11,16,32,.8); border-bottom: 1px solid var(--border); }
+    .nav { display:flex; justify-content:space-between; align-items:center; min-height:72px; gap:20px; }
+    .logo { font-weight: 800; letter-spacing: -.04em; font-size: 1.25rem; }
+    .logo span { color: var(--accent); }
+    nav { display:flex; gap:24px; color:var(--muted); font-size:.95rem; }
+    nav a:hover { color:var(--text); }
+    .hero { padding: 100px 0 84px; display:grid; grid-template-columns: 1.2fr .8fr; gap:44px; align-items:center; }
+    .eyebrow { display:inline-block; padding:7px 12px; border:1px solid var(--border); border-radius:999px; color:#c8c0ff; font-size:.85rem; }
+    h1 { font-size:clamp(2.6rem, 6vw, 5rem); line-height:1.04; letter-spacing:-.055em; margin:22px 0; }
+    h1 span { color:var(--accent); }
+    .lead { max-width:600px; color:var(--muted); font-size:1.12rem; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid var(--border); transition:.2s; }
+    .button.primary { background:var(--accent); border-color:var(--accent); color:white; }
+    .button.primary:hover { background:var(--accent-hover); transform:translateY(-2px); }
+    .button.secondary:hover { border-color:var(--accent); }
+    .visual { min-height:330px; border-radius:28px; border:1px solid var(--border); background:linear-gradient(145deg, rgba(124,92,255,.24), rgba(20,28,49,.8)); display:grid; place-items:center; overflow:hidden; position:relative; }
+    .orb { width:190px; height:190px; border-radius:50%; background:linear-gradient(135deg,#9b8aff,#5d36e8 60%,#19c6d7); box-shadow:0 0 90px rgba(124,92,255,.5); }
+    .visual::before,.visual::after { content:""; position:absolute; width:260px; height:260px; border:1px solid rgba(255,255,255,.12); border-radius:50%; }
+    .visual::after { width:340px; height:340px; }
+    section { padding:60px 0; }
+    .section-title { font-size:clamp(1.8rem,4vw,2.7rem); letter-spacing:-.04em; margin:0 0 12px; }
+    .section-intro { color:var(--muted); max-width:650px; margin:0 0 28px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { padding:24px; border:1px solid var(--border); border-radius:var(--radius); background:rgba(20,28,49,.7); }
+    .card .icon { font-size:1.7rem; }
+    .card h3 { margin:12px 0 8px; }
+    .card p { margin:0; color:var(--muted); }
+    .contact { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:32px; border:1px solid var(--border); border-radius:var(--radius); background:linear-gradient(120deg,rgba(124,92,255,.18),rgba(20,28,49,.8)); }
+    .contact p { color:var(--muted); margin-bottom:0; }
+    footer { padding:30px 0; border-top:1px solid var(--border); color:var(--muted); font-size:.9rem; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns:1fr; padding-top:68px; }
+      .visual { min-height:250px; }
+      .cards { grid-template-columns:1fr; }
+      nav { gap:12px; font-size:.85rem; }
+      .contact { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width: 440px) {
+      .container { width:calc(100% - 28px); }
+      nav a:nth-child(2) { display:none; }
+      h1 { font-size:2.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">МОЙ<span>САЙТ</span></a>
+      <nav aria-label="Основная навигация">
+        <a href="#about">О проекте</a>
+        <a href="#services">Возможности</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero" id="home">
+      <div>
+        <span class="eyebrow" id="eyebrow">Идея начинается здесь</span>
+        <h1 id="hero-title">Создаём что-то <span>крутое</span></h1>
+        <p class="lead" id="hero-description">Это стартовый шаблон сайта. Замени текст, цвета и ссылки под свою идею — страница уже адаптируется под телефоны и компьютеры.</p>
+        <div class="actions">
+          <a class="button primary" id="main-button" href="#contact">Связаться</a>
+          <a class="button secondary" href="#about">Узнать больше</a>
+        </div>
+      </div>
+      <div class="visual" aria-label="Декоративная абстрактная иллюстрация"><div class="orb"></div></div>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title" id="about-title">Просто. Современно. Удобно.</h2>
+        <p class="section-intro" id="about-description">Понятная структура помогает посетителю быстро разобраться, что предлагает твой сайт.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title" id="features-title">Что здесь есть</h2>
+        <p class="section-intro">Три блока, которые можно переименовать и наполнить собственным содержимым.</p>
+        <div class="cards" id="feature-cards">
+          <article class="card"><div class="icon">⚡</div><h3>Быстрый старт</h3><p>Один HTML-файл — удобно начать и опубликовать.</p></article>
+          <article class="card"><div class="icon">🎨</div><h3>Свой стиль</h3><p>Меняй цвета, заголовки и описание под свой проект.</p></article>
+          <article class="card"><div class="icon">📱</div><h3>Адаптивность</h3><p>Страница выглядит хорошо на мобильных устройствах.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact">
+        <div><h2 class="section-title" id="contact-title">Есть идея?</h2><p id="contact-description">Добавь сюда свою ссылку на Telegram, почту или социальную сеть.</p></div>
+        <a class="button primary" id="contact-button" href="mailto:hello@example.com">Написать мне</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">© <span id="year"></span> Мой сайт. Сделано с нуля.</div></footer>
+
+  <script>
+    // Загружаем тексты и настройки из design.csv.
+    // CSV — это таблица контента/настроек, а не файл для хранения самих изображений.
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    async function loadDesign() {
+      try {
+        const response = await fetch("./design.csv");
+        if (!response.ok) throw new Error("Не удалось загрузить design.csv");
+        const csv = await response.text();
+        const rows = csv.trim().split(/\r?\n/).slice(1);
+        const data = {};
+        for (const row of rows) {
+          const cells = row.split(",");
+          const key = (cells.shift() || "").trim();
+          data[key] = cells.join(",").trim();
+        }
+        const textMap = {
+          eyebrow: "eyebrow",
+          hero_title: "hero-title",
+          hero_description: "hero-description",
+          about_title: "about-title",
+          about_description: "about-description",
+          features_title: "features-title",
+          contact_title: "contact-title",
+          contact_description: "contact-description",
+          contact_button: "contact-button"
+        };
+        for (const [key, id] of Object.entries(textMap)) {
+          if (data[key]) document.getElementById(id).textContent = data[key];
+        }
+        if (data.site_title) document.title = data.site_title;
+        if (data.logo_text) document.querySelector(".logo").innerHTML = data.logo_text;
+        if (data.main_button_text) document.getElementById("main-button").textContent = data.main_button_text;
+        if (data.contact_email) document.getElementById("contact-button").href = "mailto:" + data.contact_email;
+        const root = document.documentElement;
+        if (data.background_color) root.style.setProperty("--bg", data.background_color);
+        if (data.surface_color) root.style.setProperty("--surface", data.surface_color);
+        if (data.text_color) root.style.setProperty("--text", data.text_color);
+        if (data.muted_color) root.style.setProperty("--muted", data.muted_color);
+        if (data.accent_color) root.style.setProperty("--accent", data.accent_color);
+        if (data.accent_hover_color) root.style.setProperty("--accent-hover", data.accent_hover_color);
+      } catch (error) {
+        console.warn("Используются встроенные настройки сайта:", error);
+      }
+    }
+    loadDesign();
+  </script>
+</body>
+</html>
